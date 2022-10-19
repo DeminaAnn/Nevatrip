@@ -112,7 +112,7 @@ body {
 $minWidth: 320px; //самые мелкие телефоны
 //$maxWidth: 1440px; //ширина полотна по макету
 $minWidthContainer: 341;
-$maxWidthContainer: 1070; //огранич контейнер
+$maxWidthContainer: 1106; //огранич контейнер
 
 //$md1: $maxWidthContainer + 12;
 //$md1: $minWidthContainer + 12;
@@ -122,23 +122,25 @@ $maxWidthContainer: 1070; //огранич контейнер
 //$md3: 1199.98;
 
 $md1: $minWidthContainer;
-$md2: 767.98;
+$md2: 479.98;
+//$md2: 767.98;
 $md3: 991.98;
 $md4: 1199.98;
 
 ._container {
    overflow: hidden;
    position: relative;
-   //max-width: $maxWidthContainer + px;
+   max-width: $maxWidthContainer + px;
    min-width: $minWidthContainer + px;
-   //min-width: $md1 + px;
+   //min-width: $minWidth + px;
    margin: 0 auto;
    padding: 0px;
 
-   @media (min-width: ($md1+px)) {
-      min-width: none;
-      //padding: 0 10px;
-   }
+   //@media (min-width: ($md1+px)) {
+   //min-width: $minWidthContainer + px;
+   //min-width: none;
+   //padding: 0 10px;
+   //}
 
    @media (min-width: ($md2+px)) {
       min-width: 750px;
@@ -148,20 +150,26 @@ $md4: 1199.98;
 
 .content {
    padding: 28px 16px 0px 18px;
-   min-width: $md1 + px;
-   width: auto;
+
+   //max-width: $maxWidthContainer + px;
+   //width: auto;
    //margin: 0 auto;
 }
 
 .excursion {
    //padding: 0px 10px;
    margin: 0px 0px 30px 0px;
+   //@media (min-width: ($md2+px)) {
+   //
+   //}
+
+   //overflow: hidden;
    &__container {
-      //padding: 26px 18px 26px 16px;
+      //padding: 0px 10px 0px 10px;
       border: 0.3px solid #828282;
       border-radius: 16px;
       //@media (min-width: ($md2+px)) {
-      //   min-width: 750px;
+      //   max-width: $maxWidthContainer + px;
       //}
    }
 
@@ -169,6 +177,7 @@ $md4: 1199.98;
       display: inline-flex;
       flex-direction: column;
       position: relative;
+
       @media (min-width: ($md2+px)) {
          flex-direction: row;
       }
@@ -176,17 +185,31 @@ $md4: 1199.98;
    }
 
    &__photo {
-      //background: url("../img/sankt-petersburg.png") no-repeat;
-
       border-radius: 16px 16px 0px 0px;
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
+      max-width: 500px;
+      //
       //min-height: 100%;
       @media (min-width: ($md2+px)) {
-         width: 473px;
+         //flex: 1 0 auto;
+         flex: 1 0 auto;
+         //width: 437px;
          height: 369px;
+         //width: 100%;
+         //overflow: hidden;
          background-size: contain;
+      }
+      img {
+         max-width: 100%;
+         @media (min-width: ($md2+px)) {
+            //width: 437px;
+            //height: 369px;
+            //width: 100%;
+            //overflow: hidden;
+            background-size: cover;
+         }
       }
    }
 
@@ -209,7 +232,10 @@ $md4: 1199.98;
    &__body {
       display: flex;
       flex-direction: column;
-      padding: 0px 12px 0px 12px;
+      padding: 0px 20px 0px 12px;
+      @media (min-width: ($md2+px)) {
+         padding: 0px 12px 0px 22px;
+      }
    }
 
    &__duration {
@@ -229,6 +255,15 @@ $md4: 1199.98;
          top: 0px;
          left: 0;
       }
+      @media (min-width: ($md2+px)) {
+         font-style: normal;
+         font-weight: 400;
+         font-size: 14px;
+         line-height: 20px;
+         /* or 143% */
+
+         color: #9e9e9e;
+      }
    }
 
    &__title {
@@ -243,6 +278,7 @@ $md4: 1199.98;
          order: -1;
          font-style: normal;
          font-weight: 400;
+         //font-size: 171%;
          font-size: 26px;
          line-height: 131%;
          margin: 16px 0px 0px 0px;
@@ -253,7 +289,7 @@ $md4: 1199.98;
       li {
          margin: 0px 0px 15px;
          position: relative;
-         padding: 0px 0px 0px 36px;
+         padding: 0px 0px 0px 30px;
 
          &:before {
             content: "";
@@ -264,11 +300,20 @@ $md4: 1199.98;
             top: 0px;
             left: 0;
          }
+         @media (min-width: ($md2+px)) {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 20px;
+            /* or 111% */
+
+            color: #343434;
+         }
       }
    }
 
    &__price {
-      margin: 35px 0px 0px 0px;
+      margin: 20px 0px 0px 0px;
    }
 }
 
@@ -277,13 +322,15 @@ $md4: 1199.98;
       display: inline-flex;
       flex-direction: column;
       width: 100%;
-      //justify-content: space-between;
+      justify-content: space-between;
       @media (min-width: ($md2+px)) {
          flex-direction: row;
+         justify-content: flex-start;
       }
    }
 
    &__title {
+      flex: 0 0 auto;
       margin: 0px 2% 0px 0px;
    }
 
@@ -291,10 +338,14 @@ $md4: 1199.98;
       display: flex;
       margin: 14px 0px 0px 0px;
       height: 100%;
+      align-items: center;
       //justify-content: space-between;
       //text-align: center;
 
       //flex-wrap: nowrap;
+      @media (min-width: ($md2+px)) {
+         margin: 0px 0px 0px 0px;
+      }
    }
 
    &__button {
@@ -304,50 +355,95 @@ $md4: 1199.98;
       height: 24px;
       margin: 0px 2% 0px 0px;
       padding: 5px 13px;
+      @media (min-width: ($md2+px)) {
+         width: 73px;
+         height: 28px;
+         padding: 3px 13px;
+         font-size: 16px;
+      }
+      &:active {
+         background: #6ba6ff;
+         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+         color: #ffffff;
+      }
    }
 }
 
 .price {
    &__row {
       display: inline-flex;
-      //justify-content: space-between;
+      justify-content: space-between;
       align-items: center;
       margin: 0px 0px 18px 0px;
       width: 100%;
+      @media (min-width: ($md2+px)) {
+         justify-content: flex-start;
+      }
    }
 
    &__discription {
+      margin: 4px 0px 0px 0px;
+      padding: 0px 0px 0px 8px;
    }
 
    &__value {
       font-weight: 400;
       font-size: 30px;
       line-height: 20px;
+      @media (min-width: ($md2+px)) {
+         font-style: normal;
+         font-weight: 400;
+         font-size: 36px;
+         line-height: 20px;
+         /* or 56% */
+
+         color: #000000;
+      }
    }
 
    &__comment {
       font-weight: 400;
       font-size: 10px;
       line-height: 20px;
+      @media (min-width: ($md2+px)) {
+         margin: 4px 0px 0px 0px;
+         font-style: normal;
+         font-weight: 400;
+         font-size: 14px;
+         line-height: 20px;
+         /* or 143% */
+
+         color: #000000;
+      }
    }
 
    &__button {
       background: #fed74b;
       border: 0.5px solid #cba500;
       border-radius: 20px;
-      width: 165px;
-      height: 44px;
+      //width: 165px;
+      //height: 44px;
+
       font-weight: 400;
       font-size: 14px;
-      line-height: 20px;
+      line-height: 143%;
       font-style: normal;
-      //align-items: center;
       text-align: center;
       padding: 14px 41px;
-      margin: 0px 0px 0px 30px;
-      @media (min-width: ($md1+px)) {
+      @media (min-width: ($md2+px)) {
          width: 187px;
          height: 52px;
+         font-size: 18px;
+         line-height: 20px;
+         /* or 111% */
+
+         color: #292929;
+         margin: 0px 0px 0px 30px;
       }
+   }
+}
+
+.more {
+   &:active {
    }
 }
