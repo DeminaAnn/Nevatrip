@@ -95,6 +95,7 @@ h6 {
 
 body {
    font-family: $fontFamily;
+   font-style: normal;
 }
 
 .wrapper {
@@ -114,63 +115,50 @@ $minWidth: 320px; //самые мелкие телефоны
 $minWidthContainer: 341;
 $maxWidthContainer: 1106; //огранич контейнер
 
-//$md1: $maxWidthContainer + 12;
-//$md1: $minWidthContainer + 12;
-
-//$md1: 767.98;
-//$md2: 991.98;
-//$md3: 1199.98;
-
-$md1: $minWidthContainer;
+$md1: $minWidthContainer + 12;
 $md2: 479.98;
-//$md2: 767.98;
-$md3: 991.98;
-$md4: 1199.98;
+$md3: 767.98;
+$md4: 991.98;
 
 ._container {
    overflow: hidden;
    position: relative;
-   max-width: $maxWidthContainer + px;
    min-width: $minWidthContainer + px;
-   //min-width: $minWidth + px;
    margin: 0 auto;
    padding: 0px;
 
-   //@media (min-width: ($md1+px)) {
-   //min-width: $minWidthContainer + px;
-   //min-width: none;
-   //padding: 0 10px;
-   //}
+   //смарт
+   @media (min-width: ($md1+px)) {
+      min-width: $minWidthContainer + px;
+   }
 
+   //планшеты
    @media (min-width: ($md2+px)) {
+      min-width: 460px;
+   }
+
+   //мал мониторы
+   @media (min-width: ($md3+px)) {
       min-width: 750px;
+   }
+
+   //большие мониторы
+   @media (min-width: ($md4+px)) {
+      min-width: 980px;
       max-width: $maxWidthContainer + px;
    }
 }
 
 .content {
    padding: 28px 16px 0px 18px;
-
-   //max-width: $maxWidthContainer + px;
-   //width: auto;
-   //margin: 0 auto;
 }
 
 .excursion {
-   //padding: 0px 10px;
    margin: 0px 0px 30px 0px;
-   //@media (min-width: ($md2+px)) {
-   //
-   //}
 
-   //overflow: hidden;
    &__container {
-      //padding: 0px 10px 0px 10px;
       border: 0.3px solid #828282;
       border-radius: 16px;
-      //@media (min-width: ($md2+px)) {
-      //   max-width: $maxWidthContainer + px;
-      //}
    }
 
    &__row {
@@ -181,7 +169,6 @@ $md4: 1199.98;
       @media (min-width: ($md2+px)) {
          flex-direction: row;
       }
-      //justify-content: space-between;
    }
 
    &__photo {
@@ -190,24 +177,18 @@ $md4: 1199.98;
       background-repeat: no-repeat;
       background-size: cover;
       max-width: 500px;
-      //
-      //min-height: 100%;
+
       @media (min-width: ($md2+px)) {
-         //flex: 1 0 auto;
          flex: 1 0 auto;
-         //width: 437px;
+         width: 473px;
          height: 369px;
-         //width: 100%;
-         //overflow: hidden;
-         background-size: contain;
+         transform: scale(1.2); /* Увеличиваем масштаб */
       }
       img {
          max-width: 100%;
          @media (min-width: ($md2+px)) {
-            //width: 437px;
-            //height: 369px;
-            //width: 100%;
-            //overflow: hidden;
+            max-width: 437px;
+            max-height: 369px;
             background-size: cover;
          }
       }
@@ -227,6 +208,13 @@ $md4: 1199.98;
       color: #3e3e3e;
       text-align: center;
       padding: 7.5px;
+
+      @media (min-width: ($md2+px)) {
+         width: 154px;
+         height: 42px;
+         font-size: 16px;
+         padding: 10px;
+      }
    }
 
    &__body {
@@ -248,37 +236,30 @@ $md4: 1199.98;
       line-height: 20px;
       &:before {
          content: "";
+         position: absolute;
          background: url("../img/icons/clock-circular-outline.png") no-repeat;
          width: 16px;
          height: 16px;
-         position: absolute;
          top: 0px;
          left: 0;
       }
       @media (min-width: ($md2+px)) {
-         font-style: normal;
          font-weight: 400;
          font-size: 14px;
          line-height: 20px;
-         /* or 143% */
-
          color: #9e9e9e;
       }
    }
 
    &__title {
-      font-style: normal;
       font-weight: 600;
       font-size: 14px;
       line-height: 22px;
-
       margin: 0px 0px 15px;
       width: 100%;
       @media (min-width: ($md2+px)) {
          order: -1;
-         font-style: normal;
          font-weight: 400;
-         //font-size: 171%;
          font-size: 26px;
          line-height: 131%;
          margin: 16px 0px 0px 0px;
@@ -293,10 +274,10 @@ $md4: 1199.98;
 
          &:before {
             content: "";
+            position: absolute;
             background: url("../img/icons/check-mark.png") 0 0 no-repeat;
             width: 16px;
             height: 16px;
-            position: absolute;
             top: 0px;
             left: 0;
          }
@@ -305,8 +286,6 @@ $md4: 1199.98;
             font-weight: 400;
             font-size: 18px;
             line-height: 20px;
-            /* or 111% */
-
             color: #343434;
          }
       }
@@ -339,10 +318,6 @@ $md4: 1199.98;
       margin: 14px 0px 0px 0px;
       height: 100%;
       align-items: center;
-      //justify-content: space-between;
-      //text-align: center;
-
-      //flex-wrap: nowrap;
       @media (min-width: ($md2+px)) {
          margin: 0px 0px 0px 0px;
       }
@@ -391,12 +366,9 @@ $md4: 1199.98;
       font-size: 30px;
       line-height: 20px;
       @media (min-width: ($md2+px)) {
-         font-style: normal;
          font-weight: 400;
          font-size: 36px;
          line-height: 20px;
-         /* or 56% */
-
          color: #000000;
       }
    }
@@ -407,12 +379,9 @@ $md4: 1199.98;
       line-height: 20px;
       @media (min-width: ($md2+px)) {
          margin: 4px 0px 0px 0px;
-         font-style: normal;
          font-weight: 400;
          font-size: 14px;
          line-height: 20px;
-         /* or 143% */
-
          color: #000000;
       }
    }
@@ -421,13 +390,9 @@ $md4: 1199.98;
       background: #fed74b;
       border: 0.5px solid #cba500;
       border-radius: 20px;
-      //width: 165px;
-      //height: 44px;
-
       font-weight: 400;
       font-size: 14px;
       line-height: 143%;
-      font-style: normal;
       text-align: center;
       padding: 14px 41px;
       @media (min-width: ($md2+px)) {
@@ -435,15 +400,8 @@ $md4: 1199.98;
          height: 52px;
          font-size: 18px;
          line-height: 20px;
-         /* or 111% */
-
          color: #292929;
          margin: 0px 0px 0px 30px;
       }
-   }
-}
-
-.more {
-   &:active {
    }
 }

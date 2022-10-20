@@ -105,14 +105,28 @@ body {
 ._container {
   overflow: hidden;
   position: relative;
-  max-width: 1106px;
   min-width: 341px;
   margin: 0 auto;
   padding: 0px;
 }
+@media (min-width: 353px) {
+  ._container {
+    min-width: 341px;
+  }
+}
 @media (min-width: 479.98px) {
   ._container {
+    min-width: 460px;
+  }
+}
+@media (min-width: 767.98px) {
+  ._container {
     min-width: 750px;
+  }
+}
+@media (min-width: 991.98px) {
+  ._container {
+    min-width: 980px;
     max-width: 1106px;
   }
 }
@@ -148,8 +162,9 @@ body {
 @media (min-width: 479.98px) {
   .excursion__photo {
     flex: 1 0 auto;
+    width: 473px;
     height: 369px;
-    background-size: contain;
+    transform: scale(1.2); /* Увеличиваем масштаб */
   }
 }
 .excursion__photo img {
@@ -157,6 +172,8 @@ body {
 }
 @media (min-width: 479.98px) {
   .excursion__photo img {
+    max-width: 437px;
+    max-height: 369px;
     background-size: cover;
   }
 }
@@ -174,6 +191,18 @@ body {
   color: #3e3e3e;
   text-align: center;
   padding: 7.5px;
+}
+@media (min-width: 479.98px) {
+  .excursion__new {
+    width: 154px;
+    height: 42px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    border-radius: 0px;
+    padding: 10px;
+  }
 }
 .excursion__body {
   display: flex;
